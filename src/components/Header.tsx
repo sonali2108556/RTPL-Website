@@ -6,12 +6,33 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
+type MenuItemDetails = {
+  title: string;
+  description: string;
+  buttonText: string;
+};
+
+type SubMenuItem = {
+  title: string;
+  path: string;
+  details: MenuItemDetails;
+};
+
+type MenuItem = {
+  submenu: SubMenuItem[];
+};
+
+type MenuItems = {
+  "Who We Are": MenuItem;
+  "What We Do": MenuItem;
+};
+
 const Header = () => {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeMenu, setActiveMenu] = useState<keyof MenuItems | null>(null);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const menuItems = {
+  const menuItems: MenuItems = {
     "Who We Are": {
       submenu: [
         {
@@ -85,7 +106,7 @@ const Header = () => {
     }
   };
 
-  const handleMenuEnter = (menuTitle: string) => {
+  const handleMenuEnter = (menuTitle: keyof MenuItems) => {
     setActiveMenu(menuTitle);
     if (menuItems[menuTitle]?.submenu) {
       setActiveSubmenu(menuItems[menuTitle].submenu[0].title);
@@ -135,7 +156,7 @@ const Header = () => {
                 <div
                   key={menuTitle}
                   className="relative"
-                  onMouseEnter={() => handleMenuEnter(menuTitle)}
+                  onMouseEnter={() => handleMenuEnter(menuTitle as keyof MenuItems)}
                   onMouseLeave={handleMenuLeave}
                 >
                   <button className={`flex items-center px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
