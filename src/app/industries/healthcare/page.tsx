@@ -26,7 +26,7 @@ const Healthcare = () => {
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56"
+                src="/healthcare.webp"
                 alt="Banking Technology"
                 className="rounded-lg shadow-2xl"
               />

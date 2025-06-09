@@ -15,25 +15,25 @@ const ContactUs = () => {
     message: ""
   });
 
-  const offices = [                                       
+  const offices = [
     {
-      city: "New York",
-      address: "123 Tech Avenue, NY 10001",
-      phone: "+1 (555) 123-4567",
-      email: "newyork@techsolutions.com"
+      city: "India",
+      address: "Bangalore, Karnataka | Patna, Bihar ",
+      phone: "+91 9448408016",
+      email: "info@raitechintro.com"
     },
     {
-      city: "London",
-      address: "456 Innovation Street, London EC1A 1AA",
-      phone: "+44 20 1234 5678",
-      email: "london@techsolutions.com"
+      city: "Overseas",
+      address: "Dunedin, New Zealand",
+      phone: "+91 9448408016",
+      email: "info@raitechintro.com"
     },
-    {
-      city: "Singapore",
-      address: "789 Digital Boulevard, Singapore 018956",
-      phone: "+65 6123 4567",
-      email: "singapore@techsolutions.com"
-    }
+    // {
+    //   city: "Singapore",
+    //   address: "789 Digital Boulevard, Singapore 018956",
+    //   phone: "+65 6123 4567",
+    //   email: "singapore@techsolutions.com"
+    // }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,10 +67,10 @@ const ContactUs = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-[#236eb4] mb-6">
+              <h2 className="text-3xl font-bold text-[#236eb4]">
                 Send Us a Message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
@@ -123,7 +123,9 @@ const ContactUs = () => {
                 >
                   Send Message
                 </Button>
-              </form>
+              </form> */}
+
+              <iframe width="100%" height="580px" src="https://cdn.forms-content.sg-form.com/a7b7c90f-7aef-11ef-8cb6-3aa0d80ab08e" />
             </div>
 
             {/* Office Locations */}
@@ -144,13 +146,6 @@ const ContactUs = () => {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
-              
-              {/* Map Placeholder */}
-              <div className="mt-8">
-                <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">Interactive Map Coming Soon</span>
-                </div>
               </div>
             </div>
           </div>

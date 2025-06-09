@@ -140,31 +140,6 @@ const OurJourney = () => {
         </div>
       </section>
 
-      {/* Awards & Certifications */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#236eb4] mb-4">
-              Awards & Recognition
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Industry recognition for our commitment to excellence and innovation
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {awards.map((award, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{award.image}</div>
-                  <h3 className="text-lg font-semibold text-[#236eb4] mb-2">{award.title}</h3>
-                  <p className="text-gray-600 text-sm">{award.organization}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTASection
         title="Be Part of Our Next Chapter"
         description="Join us as we continue to innovate, grow, and transform businesses through technology."

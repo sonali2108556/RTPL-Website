@@ -6,7 +6,6 @@ import AICapabilitiesSection from "@/components/homepage/AICapabilitiesSection";
 import IDEAMethodologySection from "@/components/homepage/IDEAMethodologySection";
 import ServicesSection from "@/components/homepage/ServicesSection";
 import IndustriesSection from "@/components/homepage/IndustriesSection";
-import TechPartnersSection from "@/components/homepage/TechPartnersSection";
 
 const Homepage = () => {
   return (
@@ -25,7 +24,6 @@ const Homepage = () => {
 
       <IndustriesSection />
 
-      <TechPartnersSection />
 
       <CTASection
         title="Ready to Revolutionize Your Business with AI?"

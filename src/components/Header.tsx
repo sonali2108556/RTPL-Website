@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -30,7 +30,9 @@ type MenuItems = {
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState<keyof MenuItems | null>(null);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const menuItems: MenuItems = {
     "Who We Are": {
@@ -106,6 +108,34 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header if at top of page
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+        setIsScrolled(false);
+        return;
+      }
+
+      // Hide header when scrolling down
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        // Show header when scrolling up
+        setIsVisible(true);
+      }
+
+      // Set scrolled state for background color
+      setIsScrolled(currentScrollY > 50);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   const handleMenuEnter = (menuTitle: keyof MenuItems) => {
     setActiveMenu(menuTitle);
     if (menuItems[menuTitle]?.submenu) {
@@ -127,7 +157,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-lg border-b border-blue-100 sticky top-0 z-50">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-blue-100' : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Enhanced Logo */}
@@ -135,19 +171,7 @@ const Header = () => {
             <div className="relative">
               <Image src="/RTPL-Digital-png.png" alt="RTPL Digital Logo" width={100} height={100} />
             </div>
-            {/* <div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#236eb4] to-[#089949] bg-clip-text text-transparent">RTPL Digital</span>
-              <div className="text-xs text-gray-500 font-medium">AI-Driven Solutions</div>
-            </div> */}
           </Link>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex relative">
@@ -161,8 +185,8 @@ const Header = () => {
                 >
                   <button className={`flex items-center px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
                     isActiveParentRoute(menuData.submenu) 
-                      ? 'text-white bg-yellow-400' 
-                      : 'text-gray-700 hover:text-[#236eb4] hover:bg-yellow-100'
+                      ? 'text-yellow-500' 
+                      : 'text-black hover:text-[#236eb4] hover:bg-yellow-100'
                   }`}>
                     {menuTitle}
                     <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300" />
@@ -221,9 +245,9 @@ const Header = () => {
                 href="/idea-methodology"
                 className={`px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
                   isActiveRoute("/idea-methodology") 
-                  ? 'text-white bg-yellow-400' 
-                  : 'text-gray-700 hover:text-[#236eb4] hover:bg-yellow-100'
-            }`}
+                  ? 'text-yellow-500' 
+                  : 'text-black hover:text-[#236eb4] hover:bg-yellow-100'
+                }`}
               >
                 IDEA Methodology
               </Link>
@@ -232,8 +256,8 @@ const Header = () => {
                 href="/case-studies"
                 className={`px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
                   isActiveRoute("/case-studies") 
-                    ? 'text-white bg-yellow-400' 
-                    : 'text-gray-700 hover:text-[#236eb4] hover:bg-yellow-100'
+                    ? 'text-yellow-500' 
+                    : 'text-black hover:text-[#236eb4] hover:bg-yellow-100'
                 }`}
               >
                 Case Studies
@@ -243,8 +267,8 @@ const Header = () => {
                 href="/contact"
                 className={`px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
                   isActiveRoute("/contact") 
-                    ? 'text-white bg-yellow-400 ' 
-                    : 'text-gray-700 hover:text-[#236eb4] hover:bg-yellow-100'
+                    ? 'text-yellow-500' 
+                    : 'text-black hover:text-[#236eb4] hover:bg-yellow-100'
                 }`}
               >
                 Contact Us
@@ -260,35 +284,6 @@ const Header = () => {
             </Button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t shadow-lg animate-fade-in">
-            <div className="p-4 space-y-2">
-              <Link href="/who-we-are" className={`block py-2 transition-colors ${
-                isActiveRoute("/who-we-are") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>Who We Are</Link>
-              <Link href="/services" className={`block py-2 transition-colors ${
-                isActiveRoute("/services") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>Services</Link>
-              <Link href="/industries" className={`block py-2 transition-colors ${
-                isActiveRoute("/industries") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>Industries</Link>
-              <Link href="/idea-methodology" className={`block py-2 transition-colors ${
-                isActiveRoute("/idea-methodology") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>IDEA Methodology</Link>
-              <Link href="/case-studies" className={`block py-2 transition-colors ${
-                isActiveRoute("/case-studies") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>Case Studies</Link>
-              <Link href="/contact" className={`block py-2 transition-colors ${
-                isActiveRoute("/contact") ? 'text-[#236eb4]' : 'text-gray-700 hover:text-[#236eb4]'
-              }`}>Contact Us</Link>
-              <Button className="w-full mt-4 bg-[#f9b21d] hover:bg-[#e6a01a] text-black">
-                Start AI Journey
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

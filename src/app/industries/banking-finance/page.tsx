@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 const BankingFinance = () => {
   return (
@@ -21,7 +22,8 @@ const BankingFinance = () => {
                 digital banking, risk management, and regulatory compliance in the modern financial landscape.
               </p>
               <Button className="bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-semibold px-8 py-3">
-                Get Started
+                <Link href="/contact">Get Started</Link>
+                
               </Button>
             </div>
             <div>

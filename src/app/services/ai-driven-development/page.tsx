@@ -51,7 +51,7 @@ const AIDrivenDevelopment = () => {
     {
       title: "Healthcare Diagnostics",
       description: "Advanced AI systems for medical image analysis and patient data interpretation.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56"
+      image: "/healthcare.webp"
     },
     {
       title: "Financial Risk Assessment",

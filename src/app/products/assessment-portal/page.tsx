@@ -112,7 +112,16 @@ const AssessmentPortal = () => {
                 <Button 
                   size="lg"
                   className="bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-bold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => window.location.href = '/contact'}
+                  onClick={() => {
+                    if (window.Calendly) {
+                      window.Calendly.initPopupWidget({
+                        url: 'https://calendly.com/disamina?hide_gdpr_banner=1',
+                      });
+                    } else {
+                      console.error('Calendly script not loaded.');
+                    }
+                    return false;
+                  }}
                 >
                   <Zap className="w-5 h-5 mr-2" />
                   Request Demo

@@ -10,28 +10,28 @@ const IndustriesSection = () => {
       name: "Banking & Finance (BFSI)",
       description: "AI-powered financial intelligence with autonomous fraud detection, predictive risk analytics, and intelligent customer insights",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
-      projects: "150+ AI Projects",
+      // projects: "150+ AI Projects",
       link: "/industries/banking-finance"
     },
     {
       name: "Healthcare",
       description: "Intelligent healthcare solutions with AI diagnostics, predictive patient care, and autonomous clinical decision support",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56",
-      projects: "120+ AI Projects",
+      image: "/healthcare.webp",
+      // projects: "120+ AI Projects",
       link: "/industries/healthcare"
     },
     {
       name: "Logistics",
       description: "Smart supply chain optimization with AI-driven predictive logistics, autonomous inventory management, and intelligent routing",
-      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
-      projects: "90+ AI Projects",
+      image: "/logistics.jpg",
+      // projects: "90+ AI Projects",
       link: "/industries/logistics"
     },
     {
       name: "Manufacturing",
       description: "Industry 4.0 solutions with intelligent automation, predictive maintenance, and AI-driven quality control systems",
       image: "https://images.unsplash.com/photo-1565043666747-69f6646db940",
-      projects: "80+ AI Projects",
+      // projects: "80+ AI Projects",
       link: "/industries/manufacturing"
     }
   ];

@@ -1,5 +1,5 @@
 
-import { Facebook, Linkedin, Youtube, Sparkles, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Linkedin, Youtube, Sparkles, Mail, Phone, MapPin, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -74,13 +74,16 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <a href="https://www.facebook.com/rtpl.digital" target="_blank" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <a href="https://www.linkedin.com/company/raitechintro" target="_blank" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <a href="https://www.instagram.com/raitechintro/" target="_blank" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.youtube.com/@rtpl.digital" target="_blank" className="w-10 h-10 bg-white/10 hover:bg-[#f9b21d] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
@@ -89,7 +92,7 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-[#c9c9ce] flex items-center">
-              <div className="w-2 h-2 bg-[#f9b21d] rounded-full mr-2"></div>
+              <div className="w-2 h-2 mr-2"></div>
               AI Services
             </h3>
             <ul className="space-y-3">
@@ -106,7 +109,7 @@ const Footer = () => {
           {/* Industries */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-[#c9c9ce] flex items-center">
-              <div className="w-2 h-2 bg-[#089949] rounded-full mr-2"></div>
+              <div className="w-2 h-2 mr-2"></div>
               Industries
             </h3>
             <ul className="space-y-3">
@@ -123,7 +126,7 @@ const Footer = () => {
           {/* Products & Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-[#c9c9ce] flex items-center">
-              <div className="w-2 h-2 bg-[#236eb4] rounded-full mr-2"></div>
+              <div className="w-2 h-2 mr-2"></div>
               Products
             </h3>
             <ul className="space-y-3 mb-8">
@@ -150,7 +153,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-[#c9c9ce] text-sm">
-            © 2024 RTPL Digital. All rights reserved. | Powered by AI Innovation
+            © 2025 RTPL Digital. All rights reserved. | Powered by AI Innovation
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <span className="text-xs text-[#c9c9ce]">Transforming Business with AI</span>

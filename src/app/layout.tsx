@@ -1,5 +1,6 @@
 import "@/styles/global.scss"
 import { Metadata } from "next"
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: 'RTPL Digital',
@@ -16,7 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
+      </head>
       <body>
+      <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>

@@ -97,7 +97,7 @@ const CaseStudies = () => {
               <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#236eb4] to-[#f9b21d] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#f9b21d] to-[#e6a01a] rounded-lg flex items-center justify-center flex-shrink-0">
                       <study.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">

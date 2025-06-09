@@ -14,7 +14,7 @@ const CTASection = ({
   title,
   description,
   buttonText,
-  buttonLink = "/contact",
+  buttonLink = "/our-journey",
   backgroundColor = "bg-gray-900",
 
 }: CTASectionProps) => {
