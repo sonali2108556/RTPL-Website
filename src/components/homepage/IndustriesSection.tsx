@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Globe } from "lucide-react";
@@ -63,7 +62,6 @@ const IndustriesSection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
-                    <div className="text-xs text-[#f9b21d] font-medium mb-1">{industry.projects}</div>
                     <div className="text-sm font-semibold">{industry.name}</div>
                   </div>
                 </div>
