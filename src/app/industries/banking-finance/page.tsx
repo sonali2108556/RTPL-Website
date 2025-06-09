@@ -10,20 +10,19 @@ const BankingFinance = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#236eb4] to-[#1e5a9e] text-white py-20">
+      <section className="relative bg-white py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#236eb4]">
                 Banking & Financial Services Innovation
               </h1>
-              <p className="text-xl mb-8 leading-relaxed">
+              <p className="text-xl mb-8 leading-relaxed text-gray-700">
                 Transform your financial institution with cutting-edge technology solutions designed for
                 digital banking, risk management, and regulatory compliance in the modern financial landscape.
               </p>
-              <Button className="bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-semibold px-8 py-3">
+              <Button className="bg-[#236eb4] hover:bg-[#1e5a9e] text-white font-semibold px-8 py-3">
                 <Link href="/contact">Get Started</Link>
-                
               </Button>
             </div>
             <div>

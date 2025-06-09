@@ -8,18 +8,18 @@ const ECommerce = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#236eb4] to-[#1e5a9e] text-white py-20">
+      <section className="relative bg-white py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#236eb4]">
                 E-Commerce Platform Solutions
               </h1>
-              <p className="text-xl mb-8 leading-relaxed">
+              <p className="text-xl mb-8 leading-relaxed text-gray-700">
                 Build powerful, scalable e-commerce platforms that drive sales, enhance customer 
                 experiences, and optimize business operations in the digital marketplace.
               </p>
-              <Button className="bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-semibold px-8 py-3">
+              <Button className="bg-[#236eb4] hover:bg-[#1e5a9e] text-white font-semibold px-8 py-3">
                 Explore Solutions
               </Button>
             </div>
