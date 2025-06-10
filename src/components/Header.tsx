@@ -33,6 +33,8 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
   const pathname = usePathname();
   const menuItems: MenuItems = {
     "Who We Are": {
@@ -166,12 +168,24 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Enhanced Logo */}
+          {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative">
               <Image src="/RTPL-Digital-png.png" alt="RTPL Digital Logo" width={100} height={100} />
             </div>
           </Link>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex relative">
@@ -276,7 +290,97 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Enhanced CTA Button */}
+          {/* Mobile Menu */}
+          <div className={`lg:hidden fixed top-0 left-0 right-0 z-50 bg-white transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}>
+            <div className="flex flex-col bg-white">
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <Link href="/" className="flex items-center space-x-3">
+                  <div className="relative">
+                    <Image src="/RTPL-Digital-png.png" alt="RTPL Digital Logo" width={100} height={100} />
+                  </div>
+                </Link>
+                <button 
+                  className="p-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+
+              <div className="p-4">
+                <div className="space-y-4">
+                  {Object.entries(menuItems).map(([menuTitle, menuData]) => (
+                    <div key={menuTitle} className="space-y-2">
+                      <button
+                        className="w-full flex items-center justify-between font-semibold text-lg text-black focus:outline-none"
+                        onClick={() => setOpenMobileAccordion(openMobileAccordion === menuTitle ? null : menuTitle)}
+                        aria-expanded={openMobileAccordion === menuTitle}
+                        aria-controls={`mobile-accordion-${menuTitle}`}
+                      >
+                        <span>{menuTitle}</span>
+                        <ChevronDown className={`h-5 w-5 ml-2 transition-transform ${openMobileAccordion === menuTitle ? 'rotate-180' : ''} text-black`} />
+                      </button>
+                      {openMobileAccordion === menuTitle && (
+                        <div id={`mobile-accordion-${menuTitle}`} className="pl-4 space-y-2 animate-fade-in">
+                          {menuData.submenu.map((item) => (
+                            <Link
+                              key={item.title}
+                              href={item.path}
+                              className={`block py-2 text-gray-700 hover:text-[#236eb4] ${
+                                pathname === item.path ? 'text-[#236eb4] font-medium' : ''
+                              }`}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  {/* Standalone links */}
+                  <Link
+                    href="/idea-methodology"
+                    className={`block py-2 text-gray-700 hover:text-[#236eb4] ${
+                      pathname === "/idea-methodology" ? 'text-[#236eb4] font-medium' : ''
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    IDEA Methodology
+                  </Link>
+                  <Link
+                    href="/case-studies"
+                    className={`block py-2 text-gray-700 hover:text-[#236eb4] ${
+                      pathname === "/case-studies" ? 'text-[#236eb4] font-medium' : ''
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Case Studies
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className={`block py-2 text-gray-700 hover:text-[#236eb4] ${
+                      pathname === "/contact" ? 'text-[#236eb4] font-medium' : ''
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+
+              <div className="p-4 border-t border-gray-200">
+                <Button className="w-full bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Start AI Journey
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center">
             <Button className="bg-[#f9b21d] hover:bg-[#e6a01a] text-black font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <Sparkles className="w-4 h-4 mr-2" />
